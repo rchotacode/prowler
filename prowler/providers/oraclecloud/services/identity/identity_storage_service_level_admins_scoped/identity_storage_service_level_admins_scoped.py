@@ -50,6 +50,10 @@ class identity_storage_service_level_admins_scoped(Check):
             for statement in policy.statements:
                 statement_upper = statement.upper()
                 statement_words = statement_upper.split(" ")
+                # Only check groups
+                if not statement_upper.startswith("ALLOW GROUP"):
+                    continue
+
                 # Check for "allow group ... to manage all-resources" (not specific to service/compartment)
                 if any(f"MANAGE {global_storage_policy}" in statement_upper for global_storage_policy in storage_policies):
                     if "WHERE" not in statement_upper:
