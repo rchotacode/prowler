@@ -303,7 +303,7 @@
       "Id": "1.15",
       "Description": "Ensure storage service-level admins cannot delete resources they manage",
       "Checks": [
-        "identity_iam_admins_cannot_update_tenancy_admins"
+        "identity_storage_service_level_admins_scoped"
       ],
       "Attributes": [
         {
